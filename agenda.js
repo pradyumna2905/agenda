@@ -11,7 +11,7 @@ if (Meteor.isClient) {
   Template.body.events ({
     'submit .new-form-agenda': function(event) {
     var title = event.target.title.value;
-        if (title) {
+      if (title) {
           Agendas.insert({
             title: title,
             createdAt: new Date()
@@ -23,6 +23,12 @@ if (Meteor.isClient) {
     }
   });
 
+
+  Template.agenda.events ({
+    'click .delete': function() {
+      Agendas.remove(this._id);
+    }
+  });
 
 }
 
