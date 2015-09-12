@@ -3,11 +3,23 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> agenda}}
+  <div class="wrapper">
+    <h1> Monthly Agenda </h1>
+    <form class="new-form-agenda">
+      <input type="text" name="title" placeholder="Enter a new agenda" />
+      <input type="submit" />
+    </form>
+    <ul>
+      {{#each agendas}}
+        {{> agenda}}
+      {{/each}}
+    </ul>
+</div>
 </body>
 
 <template name="agenda">
-
+  <li>
+    {{title}}
+    <button class="delete">Delete</button>
+  </li>
 </template>
