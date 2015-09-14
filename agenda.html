@@ -5,6 +5,13 @@
 <body>
   <div class="wrapper">
     <h1> Monthly Agenda </h1>
+    <label class="hide-completed">
+      <input type="checkbox" checked="{{hideCompleted}}" />
+        Hide completed agendas
+    </label>
+
+    {{> loginButtons}}
+
     <form class="new-form-agenda">
       <input type="text" name="title" placeholder="Enter a new agenda" />
       <input type="submit" />
@@ -18,8 +25,9 @@
 </body>
 
 <template name="agenda">
-  <li>
-    {{title}}
+  <li class="{{#if checked}} checked {{/if}}">
+    <input type="checkbox" checked={{checked}} class="toggle-check" />
+    <span class="agenda-title">{{title}}</span>
     <button class="delete">Delete</button>
   </li>
 </template>
