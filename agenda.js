@@ -21,10 +21,7 @@ if (Meteor.isClient) {
     'submit .new-form-agenda': function(event) {
     var title = event.target.title.value;
       if (title) {
-          Agendas.insert({
-            title: title,
-            createdAt: new Date()
-          });
+          Meteor.call('addAgenda', title)
 
           event.target.title.value = "";
           return false;
@@ -59,3 +56,14 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
   });
 }
+
+
+Meteor.methods({
+  addAgenda: function(title) {
+    Agendas.insert({
+      title: title,
+      createdAt: new Date()
+    });
+  }
+
+});
